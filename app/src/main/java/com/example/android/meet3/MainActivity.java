@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     boolean wrongPass = false;
     boolean callDetail = false;
     EditText txtPass;
+    EditText txtUser;
     private static final String tag = "MyMainActivity";
 
     @Override
@@ -23,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(tag, "ini event onCreate()!!! ");
 
-        EditText txtUser = (EditText) findViewById(R.id.txtUser);
+        txtUser = (EditText) findViewById(R.id.txtUser);
         txtPass = (EditText) findViewById(R.id.txtPass);
         Button btnLogin = (Button) findViewById(R.id.btn_login);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!txtPass.getText().toString().equals("dela")){
+                if(!(txtPass.getText().toString().equals("dela") && txtUser.getText().toString().equals("dela"))){
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle("Password Salah");
                     builder.create().show();
