@@ -46,18 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
         if(savedInstanceState != null){
             wrongPass = savedInstanceState.getBoolean("wrong_pass");
-            callDetail = savedInstanceState.getBoolean("callDetail");
-           // Log.d(tag,(String)callDetail);
         }
 
         if(wrongPass){
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Password Salah");
             builder.create().show();
-        }
-
-        if(callDetail){
-            finish();
         }
     }
 
@@ -77,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.d(tag, "ini event onResume()!!! ");
+        if(callDetail){
+            finish();
+        }
     }
 
     @Override
@@ -100,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putBoolean("wrong_pass",wrongPass);
-        outState.putBoolean("callDetail",callDetail);
         super.onSaveInstanceState(outState);
     }
 }
